@@ -165,7 +165,7 @@
                             <ul class="list-disc list-inside ml-4 my-2">
                                 <li><strong>Extreme Nationalism:</strong> They believed Germany was the best country and should be very powerful.</li>
                                 <li><strong>Racism and Antisemitism:</strong> They hated Jewish people (this is called antisemitism) and blamed them for Germany's problems. They also believed in a made-up idea of a "master race" of pure Germans (they called them "Aryans").</li>
-                                <li>They thought Germany needed more land, especially in Eastern Europe, for its people to live and farm.</li>
+                                <li><strong>Expansionism:</strong>They thought Germany needed more land, especially in Eastern Europe, for its people to live and farm.</li>
                                 <li><strong>Anti-Democracy:</strong> They hated democracy and believed Germany needed one all-powerful leader.</li>
                             </ul>
                         These ideas appealed to some Germans who felt lost and angry. The Nazi party promised to make Germany strong again and find scapegoats (a person to blame for faults) for its troubles.
@@ -311,7 +311,7 @@
         </footer>
     </div>
 
-    <script>
+     <script>
         // Set current year in footer
         document.getElementById('currentYear').textContent = new Date().getFullYear();
 
@@ -332,72 +332,138 @@
             document.getElementById('content-area').scrollIntoView({ behavior: 'smooth', block: 'start' });
         }
 
-        // Quiz Data (Ensure text content is not lost in minification)
+        // Quiz Data
         const quizData = [
             {
-                question: "What was the name of the myth that falsely blamed civilian politicians for Germany's defeat in WWI?",
-                options: ["The Great Betrayal", "November Criminals Myth", "Stab-in-the-Back Myth (Dolchstoßlegende)", "The Weimar Conspiracy"],
-                answer: "Stab-in-the-Back Myth (Dolchstoßlegende)",
+                question: "A myth, popular in post-WWI Germany, primarily served to:",
+                options: [
+                    "Accurately explain Germany's military logistics failures.",
+                    "Justify the reparations demanded by the Treaty of Versailles.",
+                    "Undermine trust in the Weimar Republic by falsely blaming civilian politicians for the war's loss.",
+                    "Promote international cooperation through the League of Nations."
+                ],
+                answer: "Undermine trust in the Weimar Republic by falsely blaming civilian politicians for the war's loss.",
                 topic: "causes"
             },
             {
-                question: "What was it called when German money became almost worthless in the early 1920s because the government printed too much?",
-                options: ["The Great Depression", "Hyperinflation", "The Banking Collapse of 1921", "The Reparations Crisis"],
-                answer: "Hyperinflation",
+                question: "During Germany's hyperinflation in the early 1920s, what was a direct and vividly described consequence of the government's policy of printing excessive money?",
+                options: [
+                    "A significant increase in the international value of the German Mark.",
+                    "The stabilization of prices for essential goods due to government subsidies.",
+                    "The near-total loss of money's value, requiring huge amounts of cash for simple purchases like bread.",
+                    "A boom in foreign investment due to favorable exchange rates."
+                ],
+                answer: "The near-total loss of money's value, requiring huge amounts of cash for simple purchases like bread.",
                 topic: "causes"
             },
             {
-                question: "Adolf Hitler became the leader of which political party, also known as the Nazi Party?",
-                options: ["Social Democratic Party", "Communist Party of Germany", "German National People's Party", "National Socialist German Workers' Party"],
-                answer: "National Socialist German Workers' Party",
+                question: "According to the provided text, a key aspect of Nazi ideology under Adolf Hitler, which motivated their expansionism, was the belief that Germany needed:",
+                options: [
+                    "To form an economic union with Western European nations to counter American influence.",
+                    "More land, particularly in Eastern Europe, for its population to live and farm.",
+                    "To reclaim its former colonial possessions in Africa and Asia to restore national pride.",
+                    "To establish a global maritime empire to control trade routes."
+                ],
+                answer: "More land, particularly in Eastern Europe, for its population to live and farm.",
                 topic: "causes"
             },
             {
-                question: "Which of these countries was NOT a main member of the Axis Powers?",
-                options: ["Germany", "Italy", "Japan", "Soviet Union"],
-                answer: "Soviet Union",
+                question: "What was the primary and immediate consequence of the Enabling Act passed in Germany in March 1933, as detailed in the text?",
+                options: [
+                    "It mandated new elections monitored by international observers.",
+                    "It granted Adolf Hitler dictatorial powers, allowing him to legislate without parliamentary consent.",
+                    "It led to the formal dissolution of the Nazi Party and the restoration of the monarchy.",
+                    "It transferred all legislative authority to the League of Nations."
+                ],
+                answer: "It granted Adolf Hitler dictatorial powers, allowing him to legislate without parliamentary consent.",
                 topic: "path"
             },
             {
-                question: "The 'Danzig Crisis,' which directly led to the invasion of Poland, involved Germany's demands on which country?",
-                options: ["Czechoslovakia", "Austria", "Poland", "France"],
-                answer: "Poland",
+                question: "Which specific event, as mentioned in the 'Axis and Allies' section, was the direct encouragement for the Soviet Union joining the Allied Powers during WWII?",
+                options: [
+                    "The Japanese attack on Pearl Harbor.",
+                    "The signing of the Tripartite Pact by Germany, Italy, and Japan.",
+                    "Germany's invasion of the Soviet Union in 1941.",
+                    "Italy's declaration of war on Britain and France in 1940."
+                ],
+                answer: "Germany's invasion of the Soviet Union in 1941.",
                 topic: "path"
             },
             {
-                question: "Germany's surprise invasion of Denmark and Norway in April 1940 was mainly to secure shipments of what resource?",
-                options: ["Oil", "Coal", "Iron Ore", "Timber"],
-                answer: "Iron Ore",
+                question: "In the lead-up to the invasion of Poland, the Danzig Crisis involved Hitler demanding the return of the city of Danzig and also pressing Poland for what, according to the section 'The Danzig Crisis: The Spark that Lit the Fire'?",
+                options: [
+                    "Poland's immediate military alliance with Germany against the Soviet Union.",
+                    "German territorial expansion and access to food resources.",
+                    "The complete demilitarization of the Polish-German border.",
+                    "A significant payment of gold reserves to the German Reichsbank."
+                ],
+                answer: "German territorial expansion and access to food resources.",
+                topic: "path"
+            },
+            {
+                question: "Germany's invasion of Denmark and Norway (Operation Weserübung) was motivated by the need to secure iron ore supplies and what other critical strategic objective detailed in the text?",
+                options: [
+                    "To capture advanced Scandinavian radar technology.",
+                    "To establish a staging ground for an invasion of Sweden.",
+                    "To prevent an Allied blockage or occupation and secure German naval access to the North Atlantic.",
+                    "To liberate ethnic German populations residing in those countries."
+                ],
+                answer: "To prevent an Allied blockage or occupation and secure German naval access to the North Atlantic.",
                 topic: "aggressions"
             },
             {
-                question: "Through which unexpected forest region did German tank forces break through to invade France in 1940?",
-                options: ["Black Forest", "Bavarian Forest", "Teutoburg Forest", "Ardennes Forest"],
-                answer: "Ardennes Forest",
+                question: "The German Blitzkrieg's success in the Battle of France in 1940 was significantly aided by their decision to launch a major armored soldiers through which specific region, considered by the Allies as difficult for tanks and thus lightly defended?",
+                options: [
+                    "The heavily fortified Maginot Line, using new siege weaponry.",
+                    "The flat coastal plains of Normandy, relying on naval support.",
+                    "The Ardennes Forest, outwitting Allied expectations and main defenses.",
+                    "The Swiss border, violating Swiss neutrality to achieve surprise."
+                ],
+                answer: "The Ardennes Forest, outwitting Allied expectations and main defenses.",
                 topic: "aggressions"
             },
             {
-                question: "When did Italy, under Mussolini, officially join Germany in World War II?",
-                options: ["September 1939 (Start of war)", "June 1940 (After France was nearly defeated)", "December 1941 (After Pearl Harbor)", "May 1938 (Before the war)"],
-                answer: "June 1940 (After France was nearly defeated)",
+                question: "What was Mussolini's primary calculation when Italy declared war on Britain and France in June 1940, as described in the text?",
+                options: [
+                    "He believed Italy's military was independently capable of defeating the Allied forces in the Mediterranean.",
+                    "He was responding to a direct Allied naval blockade of Italian ports.",
+                    "He anticipated a swift and decisive Axis victory and aimed to secure territorial gains for Italy.",
+                    "He was fulfilling a secret pre-war treaty to Germany that gave immediate Italian entry."
+                ],
+                answer: "He anticipated a swift and decisive Axis victory and aimed to secure territorial gains for Italy.",
                 topic: "aggressions"
             },
             {
-                question: "What is the name for the event on November 9-10, 1938, when Nazis attacked Jewish homes, businesses, and synagogues?",
-                options: ["The Night of Long Knives", "The Beer Hall Putsch", "Kristallnacht (Night of Broken Glass)", "The Warsaw Ghetto Uprising"],
-                answer: "Kristallnacht (Night of Broken Glass)",
+                question: "Kristallnacht (Night of Broken Glass) in November 1938 represented a significant escalation in Nazi persecution primarily because, according to the text, it involved:",
+                options: [
+                    "The first implementation of discriminatory laws against Jewish businesses.",
+                    "Widespread, officially encouraged physical violence, destruction of property, and mass arrests targeting Jews.",
+                    "The forced closure of all Jewish schools and universities in Germany.",
+                    "The formal announcement of plans."
+                ],
+                answer: "Widespread, officially encouraged physical violence, destruction of property, and mass arrests targeting Jews.",
                 topic: "holocaust"
             },
             {
-                question: "Auschwitz-Birkenau was one of the most infamous Nazi camps primarily designed for what purpose?",
-                options: ["Holding Prisoners of War", "Relocating populations", "Forced Labor for war production", "Systematic extermination (mass murder)"],
-                answer: "Systematic extermination (mass murder)",
+                question: "According to the text, what was the primary distinguishing purpose of Nazi death camps like Auschwitz-Birkenau, when compared to the initial function of concentration camps?",
+                options: [
+                    "To serve as large-scale agricultural enterprises using prisoner labor.",
+                    "To function as high-security prisons for prominent political dissidents.",
+                    "The systematic, industrialized mass murder of targeted groups, especially Jewish people.",
+                    "To act as transit centers for the resettlement of populations in Eastern Europe."
+                ],
+                answer: "The systematic, industrialized mass murder of targeted groups, especially Jewish people.",
                 topic: "holocaust"
             },
             {
-                question: "The surprise attack by Japan on which US naval base on December 7, 1941, caused the USA to enter WWII?",
-                options: ["San Diego Naval Base", "Norfolk Naval Station", "Pearl Harbor", "Guantanamo Bay Naval Base"],
-                answer: "Pearl Harbor",
+                question: "Japan's strategic objective in attacking the U.S. naval base at Pearl Harbor on December 7, 1941, was primarily to:",
+                options: [
+                    "Force the United States into a military alliance against the Soviet Union.",
+                    "Capture the Hawaiian Islands as a permanent Japanese territory.",
+                    "Severely damage the U.S. Pacific Fleet to prevent American interference with Japan's expansionist ambitions in Asia.",
+                    "Demonstrate the superiority of Japanese naval aviation to the world."
+                ],
+                answer: "Severely damage the U.S. Pacific Fleet to prevent American interference with Japan's expansionist ambitions in Asia.",
                 topic: "global"
             }
         ];
