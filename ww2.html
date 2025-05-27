@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>World War II: History and Quiz</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #333D29; /* Dark Olive Green */
+            color: #EAE0D5; /* Parchment/Light Beige */
+        }
+        .tab-button {
+            transition: all 0.3s ease;
+            border-bottom: 2px solid transparent;
+            color: #C6AC8F; /* Muted Gold/Khaki for inactive tabs */
+        }
+        .tab-button.active {
+            border-bottom-color: #A44A3F; /* Muted Red/Terracotta for active tab */
+            color: #A44A3F;
+        }
+        .content-section {
+            display: none;
+            animation: fadeIn 0.5s ease-in-out;
+        }
+        .content-section.active {
+            display: block;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .quiz-option {
+            transition: background-color 0.2s ease;
+            border-color: #5E503F; /* Darker Khaki/Brown for borders */
+        }
+        .quiz-option:hover {
+            background-color: #4A412A; /* Darker Olive for hover */
+        }
+        .correct {
+            background-color: #588157 !important; /* Forest Green for correct */
+            color: #EAE0D5;
+            border-color: #3A5A40 !important;
+        }
+        .incorrect {
+            background-color: #9B2226 !important; /* Darker Red for incorrect */
+            color: #EAE0D5;
+            border-color: #7F1D1D !important;
+        }
+        .info-card {
+            background-color: #4A412A; /* Darker Olive/Brown for Card background */
+            border-left: 4px solid #A44A3F; /* Muted Red/Terracotta accent border */
+            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+        }
+        img.history-image {
+            border: 3px solid #5E503F; /* Darker Khaki/Brown border for images */
+            box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+        }
+        .header-title {
+            color: #A44A3F; /* Muted Red for main title */
+        }
+        .header-subtitle {
+            color: #C6AC8F; /* Muted Gold/Khaki for subtitle */
+        }
+        .nav-border {
+            border-color: #5E503F; /* Darker Khaki/Brown for nav border */
+        }
+        .button-primary {
+            background-color: #A44A3F; /* Muted Red */
+            color: #EAE0D5;
+        }
+        .button-primary:hover {
+            background-color: #8C3A32; /* Darker Muted Red */
+        }
+        .button-secondary {
+            background-color: #5E503F; /* Darker Khaki/Brown */
+            color: #EAE0D5;
+        }
+        .button-secondary:hover {
+            background-color: #4A412A; /* Darker Olive */
+        }
+        .footer-text {
+            color: #C6AC8F;
+        }
+        .footer-border {
+            border-color: #5E503F;
+        }
+
+        /* Custom scrollbar for better aesthetics in dark mode */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #4A412A; /* Dark Olive/Brown */
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #5E503F; /* Darker Khaki/Brown */
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #C6AC8F; /* Muted Gold */
+        }
+    </style>
+</head>
+<body>
+    <div class="container mx-auto p-4 md:p-8 max-w-5xl">
+        <header class="text-center mb-8">
+            <h1 class="text-4xl md:text-5xl font-bold header-title">World War II: An Interactive Journey</h1>
+            <p class="text-lg header-subtitle mt-2">Learn about the pivotal moments and test your knowledge.</p>
+        </header>
+
+        <nav class="mb-8">
+            <ul class="flex flex-wrap justify-center border-b nav-border">
+                <li class="mr-1"><button onclick="showSection('intro')" class="tab-button active py-2 px-4 font-semibold">Introduction</button></li>
+                <li class="mr-1"><button onclick="showSection('causes')" class="tab-button py-2 px-4 font-semibold">Seeds of Conflict</button></li>
+                <li class="mr-1"><button onclick="showSection('path')" class="tab-button py-2 px-4 font-semibold">Path to War</button></li>
+                <li class="mr-1"><button onclick="showSection('aggressions')" class="tab-button py-2 px-4 font-semibold">Early Aggressions</button></li>
+                <li class="mr-1"><button onclick="showSection('holocaust')" class="tab-button py-2 px-4 font-semibold">The Holocaust</button></li>
+                <li class="mr-1"><button onclick="showSection('global')" class="tab-button py-2 px-4 font-semibold">Global Conflict</button></li>
+                <li><button onclick="showSection('quiz')" class="tab-button py-2 px-4 font-semibold">Quiz</button></li>
+            </ul>
+        </nav>
+
+        <main id="content-area">
+            <section id="intro" class="content-section active">
+                <h2 class="text-3xl font-semibold mb-6" style="color: #A44A3F;">Welcome to the Story of World War II</h2>
+                <div class="info-card p-6 rounded-lg shadow-lg mb-6">
+                    <p class="text-lg leading-relaxed mb-4">
+                        World War II, which happened from 1939 to 1945, was the biggest and deadliest war ever. More than 30 countries fought in it, and about 50 to 85 million people died. This huge war changed which countries were friends or enemies and how people lived all over the world.
+                    </p>
+                    <p class="text-lg leading-relaxed">
+                        This website will help you learn about the important things that happened, why they happened, and the key people involved in this period. Click on the different sections to find out more. After you've learned a bit, you can try the quiz to see what you remember!
+                    </p>
+                </div>
+                <img src="https://i.natgeofe.com/n/87fdedcf-6154-4b31-8c73-3bbab497f373/ww2-anniversary-legacy-berlin.jpg" alt="WWII Overview - Placeholder: e.g., a montage of iconic WWII scenes" class="history-image rounded-lg mx-auto">
+            </section>
+
+            <section id="causes" class="content-section">
+                <h2 class="text-3xl font-semibold mb-6" style="color: #A44A3F;">The "Seeds" of Conflict: Why WWII Started</h2>
+                <div class="space-y-8">
+                    <div class="info-card p-6 rounded-lg shadow-lg">
+                        <h3 class="text-2xl font-semibold mb-3" style="color: #C6AC8F;">After WWI: The Treaty of Versailles and the "November Criminals" Story</h3>
+                        <p class="leading-relaxed mb-4">After World War I ended in 1918, the winning countries (like Britain and France) made a peace agreement called the Treaty of Versailles in 1919. This treaty was very harsh on Germany, which had lost the war. Germany had to:
+                            <ul class="list-disc list-inside ml-4 my-2">
+                                <li>Give up large areas of its land.</li>
+                                <li>Make its army very small.</li>
+                                <li>Pay a huge amount of money, called reparations, to the countries it had damaged during the war.</li>
+                            </ul>
+                            Many Germans felt this treaty was incredibly unfair and were very angry about it. This anger made it difficult for Germany's new democratic government, called the Weimar Republic, to get support from its own people. It felt like the government was starting off on the wrong foot.
+                            Adding to the problems, a false myth became popular. This myth  wrongly claimed that Germany's army hadn't really lost the war on the battlefield. Instead, it said that politicians at home, who were insultingly nicknamed the "November Criminals", had "stabbed their army and the country in the back" , which caused Germany to surrender. This was not true, but many people believed it. This lie made people trust the new democratic government even less and created a lot of bitterness.
+                        </p>
+                        <img src="https://www.the-low-countries.com/wp-content/uploads/2024/08/VERSAILLES-William_Orpen_-_The_Signing_of_Peace_in_the_Hall_of_Mirrors_._0.jpg" alt="Treaty of Versailles - Placeholder: e.g., delegates at Versailles or a political cartoon of the era" class="history-image rounded-lg mx-auto mb-4">
+                    </div>
+                    <div class="info-card p-6 rounded-lg shadow-lg">
+                        <h3 class="text-2xl font-semibold mb-3" style="color: #C6AC8F;">Money Troubles: Hyperinflation in Germany</h3>
+                        <p class="leading-relaxed mb-4">Because Germany had to pay so much money for war reparations and its economy was already weak, the government started printing more and more money. They hoped this would solve their problems, but it made things much worse. In the early 1920s, especially in 1923, this led to something called hyperinflation. "Hyper" means "extreme," so hyperinflation means prices went up incredibly fast. Money became almost worthless. They even needed a wheelbarrow full of cash just to buy a loaf of bread! People's life savings disappeared overnight. This caused terrible hardship and made many Germans desperate and angry at their government for not being able to control the situation. This economic chaos made people look for extreme solutions.</p>
+                        <img src="https://tobirommel.com/wp-content/uploads/2019/10/hyperinflation.jpg?w=640" alt="German Hyperinflation - Placeholder: e.g., children playing with stacks of banknotes" class="history-image rounded-lg mx-auto mb-4">
+                    </div>
+                    <div class="info-card p-6 rounded-lg shadow-lg">
+                        <h3 class="text-2xl font-semibold mb-3" style="color: #C6AC8F;">New Extreme Ideas: The Rise of Nazi Ideology and the German Workers' Party</h3>
+                        <p class="leading-relaxed mb-4">With all the anger from the Treaty of Versailles and the misery from hyperinflation, many Germans were looking for someone to blame and a strong leader to fix things. This created an opening for extreme political groups. One of these was a small group called the German Workers' Party. In 1919, a man named Adolf Hitler joined this party. He was a powerful and persuasive speaker.
+                        Hitler quickly became the leader and changed the party into the National Socialist German Workers' Party, or Nazi Party for short. The Nazis had a set of extreme ideas:
+                            <ul class="list-disc list-inside ml-4 my-2">
+                                <li><strong>Extreme Nationalism:</strong> They believed Germany was the best country and should be very powerful.</li>
+                                <li><strong>Racism and Antisemitism:</strong> They hated Jewish people (this is called antisemitism) and blamed them for Germany's problems. They also believed in a made-up idea of a "master race" of pure Germans (they called them "Aryans").</li>
+                                <li>They thought Germany needed more land, especially in Eastern Europe, for its people to live and farm.</li>
+                                <li><strong>Anti-Democracy:</strong> They hated democracy and believed Germany needed one all-powerful leader.</li>
+                            </ul>
+                        These ideas appealed to some Germans who felt lost and angry. The Nazi party promised to make Germany strong again and find scapegoats (a person to blame for faults) for its troubles.
+                        </p>
+                        <img src="https://dsvfmvr182ibt.cloudfront.net/prod/uploads/2019/01/WL1319_1200x800_acf_cropped.jpg" alt="Nazi Party Rally - Placeholder: e.g., an early Nazi poster or Hitler speaking at a rally" class="history-image rounded-lg mx-auto">
+                    </div>
+                </div>
+            </section>
+
+            <section id="path" class="content-section">
+                <h2 class="text-3xl font-semibold mb-6" style="color: #A44A3F;">The Path to War: How Things Got Worse</h2>
+                 <div class="space-y-8">
+                    <div class="info-card p-6 rounded-lg shadow-lg">
+                        <h3 class="text-2xl font-semibold mb-3" style="color: #C6AC8F;">The Time Between Wars (Interwar Period) and Hitler Taking Full Control</h3>
+                        <p class="leading-relaxed mb-4">The years between World War I and World War II (roughly 1919 to 1939) are called the Interwar Period. It was a very unstable time. Many countries faced money problems, especially after the Great Depression started in 1929, which was a worldwide economic crisis. Extreme political ideas, like Fascism in Italy and Nazism in Germany, became more popular. 
+                        In Germany, Adolf Hitler became Chancellor (like a Prime Minister) in January 1933. Once in power, he moved very quickly to get rid of democracy. In March 1933, he passed the Enabling Act, a law that basically gave him the power to make any laws he wanted without anyone else's approval. This turned Germany into a totalitarian dictatorship, meaning the Nazi party controlled everything and Hitler was the absolute ruler.
+                        </p>
+                        <img src="https://preview.redd.it/84b7nkum6p321.jpg?width=640&crop=smart&auto=webp&s=12d3b59b265e3c63c84d36125783037e7918c829" alt="Hitler Chancellor - Placeholder: e.g., Hitler addressing the Reichstag or a newspaper headline" class="history-image rounded-lg mx-auto mb-4">
+                    </div>
+                    <div class="info-card p-6 rounded-lg shadow-lg">
+                        <h3 class="text-2xl font-semibold mb-3" style="color: #C6AC8F;">The Teams: Axis and Allies</h3>
+                        <p class="leading-relaxed mb-4">As tensions grew, countries started to form two main opposing teams, or alliances:
+                            <strong class="block my-2">The Axis Powers:</strong> The main countries in this group were:
+                            <ul class="list-disc list-inside ml-4 my-1">
+                                <li><strong>Germany:</strong> Led by Adolf Hitler.</li>
+                                <li><strong>Italy:</strong> Led by a dictator named Benito Mussolini, who also had expansionist ideas (Fascism).</li>
+                                <li><strong>Japan:</strong> Led by military leaders who wanted to expand Japan's empire in Asia.</li>
+                            </ul>
+                            These countries wanted to expand their territories and power, and they didn't like the way the world was set up after WWI. Germany and Italy officially became partners in 1936 (the Rome-Berlin Axis). Japan later joined them.
+                            <strong class="block my-2">The Allied Powers (or Allies):</strong> At the start, the main Allies were:
+                             <ul class="list-disc list-inside ml-4 my-1">
+                                <li><strong>United Kingdom (Britain)</strong></li>
+                                <li><strong>France</strong></li>
+                            </ul>
+                            Later, other major countries joined the Allies, including:
+                             <ul class="list-disc list-inside ml-4 my-1">
+                                <li><strong>The Soviet Union (Russia):</strong> They joined after Germany attacked them in 1941.</li>
+                                <li><strong>The United States (USA):</strong> They joined after Japan attacked Pearl Harbor in 1941.</li>
+                            </ul>
+                            Many other smaller countries around the world also joined the Allies to fight against the Axis.
+                        </p>
+                         <img src="https://public.flourish.studio/visualisation/19087506/thumbnail" alt="Axis Leaders - Placeholder: e.g., Hitler and Mussolini together" class="history-image rounded-lg mx-auto mb-4">
+                    </div>
+                    <div class="info-card p-6 rounded-lg shadow-lg">
+                        <h3 class="text-2xl font-semibold mb-3" style="color: #C6AC8F;">The Danzig Crisis: The Spark that Lit the Fire</h3>
+                        <p class="leading-relaxed mb-4">After Hitler took power, he started to break the Treaty of Versailles. He rebuilt Germany's army and began taking back land. In 1938, Germany took over Austria and then a part of Czechoslovakia called the Sudetenland.
+                        But Hitler wanted more. He next turned his attention to Poland. He demanded two main things:
+                            <ul class="list-disc list-inside ml-4 my-2">
+                                <li>The return of the city of Danzig (now called Gdańsk in Poland). Danzig had many German people living there, but after WWI it was made a "Free City" and was important for Poland to access the sea.</li>
+                                <li>To expand its territory and access sufficient food in sparse areas.</li>
+                            </ul>
+                        Poland refused Hitler's demands. Britain and France had promised to help Poland if it was attacked. When Germany invaded Poland on September 1, 1939, because these demands weren't met, Britain and France declared war on Germany two days later. This was the official start of World War II in Europe.
+                        </p>
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/6/64/ORP_Wicher.jpg" alt="Danzig Crisis - Placeholder: e.g., German troops entering Poland or a map of Danzig" class="history-image rounded-lg mx-auto">
+                    </div>
+                </div>
+            </section>
+
+            <section id="aggressions" class="content-section">
+                <h2 class="text-3xl font-semibold mb-6" style="color: #A44A3F;">Early Attacks & Germany's Expansion</h2>
+                <div class="space-y-8">
+                    <div class="info-card p-6 rounded-lg shadow-lg">
+                        <h3 class="text-2xl font-semibold mb-3" style="color: #C6AC8F;">Germany Invades Denmark and Norway (Operation Weserübung)</h3>
+                        <p class="leading-relaxed mb-4">In April 1940, a few months after the war started, Germany launched a surprise attack on Denmark and Norway. This operation was codenamed "Weserübung." Denmark was a small country and surrendered very quickly, within hours. Norway fought back harder, but Germany eventually took control of it too.
+                       There were two main reasons for this:
+                            <ul class="list-disc list-inside ml-4 my-2">
+                                <li><strong>Iron material:</strong> Germany needed iron to make weapons and steel. A lot of this iron came from Sweden, and it was shipped through ports in Norway. By controlling Norway, Germany could make sure it kept getting this important resource.</li>
+                                <li><strong>Strategic Position:</strong> Germany wanted to stop Britain and France (the Allies) from blocking its access to the North Atlantic Ocean or from invading Norway themselves. Controlling Norway gave German submarines and warships better bases.</li>
+                            </ul>
+                        </p>
+                        <img src="https://m.media-amazon.com/images/I/81Dayd851IL._UF1000,1000_QL80_.jpg" alt="Invasion of Norway - Placeholder: e.g., German troops in Norway or naval activity" class="history-image rounded-lg mx-auto mb-4">
+                    </div>
+                    <div class="info-card p-6 rounded-lg shadow-lg">
+                        <h3 class="text-2xl font-semibold mb-3" style="color: #C6AC8F;">Through the Ardennes Forest: The Fall of France</h3>
+                        <p class="leading-relaxed mb-4">In May 1940, Germany launched a massive attack on Western Europe to defeat France and Britain. France had built a strong line of defenses called the Maginot Line along its border with Germany. The French and British expected the Germans to attack through Belgium, like they did in WWI.
+                        However, the Germans had a surprise plan. Their main tank forces did something unprecedent. They attacked through the Ardennes Forest. This was a hilly area with dense woods in Belgium and Luxembourg, and the Allies thought it was too difficult for tanks to pass through, so they didn't defend it heavily.
+                        German tanks and soldiers pushed through the Ardennes quickly. This move completely surprised the Allies and went around the Maginot Line. The German army used a new tactic called "Blitzkrieg," which means "lightning war." It involved fast-moving tanks, supported by airplanes, to break through enemy lines and cause chaos.
+                        This surprise attack worked incredibly well. The Allied armies in Belgium were trapped, and many British and French soldiers had to be rescued from the beaches of Dunkirk. France was defeated very quickly and surrendered to Germany in June 1940.
+                        </p>
+                        <img src="https://i.ebayimg.com/images/g/c9sAAOSwZyFjnGjt/s-l1200.jpg" alt="Ardennes Forest Offensive - Placeholder: e.g., German tanks moving through a forest or French POWs" class="history-image rounded-lg mx-auto mb-4">
+                    </div>
+                    <div class="info-card p-6 rounded-lg shadow-lg">
+                        <h3 class="text-2xl font-semibold mb-3" style="color: #C6AC8F;">Italy Joins the War</h3>
+                        <p class="leading-relaxed mb-4">Benito Mussolini, the Fascist dictator of Italy, had been watching Germany's quick victories. When he saw that France was about to be defeated, he decided it was time for Italy to join the war on Germany's side (the Axis). On June 10, 1940, Italy declared war on Britain and France.
+                        Mussolini hoped that by joining what looked like the winning side, Italy could gain new territories and expand its power in the Mediterranean Sea and in Africa. He thought the war would be over soon, and he wanted to be one of the victors to share the spoils. Italy's entry into the war opened up new areas of fighting, especially in North Africa and the Balkans.
+                        </p>
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTOg88jM4GQXaDAGYQMP8p5-BRdo5OrgSakZw&s" alt="Italy Enters War - Placeholder: e.g., Mussolini giving a speech or Italian troops mobilizing" class="history-image rounded-lg mx-auto">
+                    </div>
+                </div>
+            </section>
+
+             <section id="holocaust" class="content-section">
+                <h2 class="text-3xl font-semibold mb-6" style="color: #A44A3F;">The Holocaust: A Terrible Crime</h2>
+                <div class="space-y-8">
+                    <div class="info-card p-6 rounded-lg shadow-lg">
+                        <h3 class="text-2xl font-semibold mb-3" style="color: #C6AC8F;">Kristallnacht: The Night of Broken Glass</h3>
+                        <p class="leading-relaxed mb-4">Even before World War II started, the Nazis in Germany were treating Jewish people terribly. They passed laws that took away their rights and property. On November 9-10, 1938, this persecution became much more violent. This event is known as Kristallnacht, which means "Night of Broken Glass" in German.
+                        On these two nights, Nazi officials encouraged their gestapos (the secret state police of Nazi) and ordinary German citizens to attack Jewish people and their property. Across Germany and Austria (which Germany had taken over), Jewish homes, businesses, and synagogues (places of worship) were smashed and burned. Store windows were shattered, which is why it's called the "Night of Broken Glass."
+                        At least 91 Jewish people were murdered during Kristallnacht, and many more were injured. About 30,000 Jewish men were arrested and sent to early concentration camps. 
+                        </p>
+                        <img src="https://ichef.bbci.co.uk/images/ic/640x360/p0jm7w6y.jpg" alt="Kristallnacht - Placeholder: e.g., a damaged synagogue or shopfront from Kristallnacht" class="history-image rounded-lg mx-auto mb-4">
+                    </div>
+                    <div class="info-card p-6 rounded-lg shadow-lg">
+                        <h3 class="text-2xl font-semibold mb-3" style="color: #C6AC8F;">Concentration Camps</h3>
+                        <p class="leading-relaxed mb-4">The Nazis created a huge system of camps. At first, concentration camps were mainly used to imprison people who opposed the Nazis politically. But soon, they were filled with Jewish people, Roma people (sometimes called Gypsies), people with disabilities, homosexuals, and anyone else the Nazis considered "inferior" or an "enemy."
+                        Life in these camps was horrific. Prisoners were forced to do slave labor, were given very little food, and faced constant beatings and torture. Many died from starvation, disease, or exhaustion.
+                        During World War II, the Nazis took their hatred even further. They built special camps called death camps. The main purpose of these camps was to murder people on a massive scale, especially Jewish people. Camps like Auschwitz-Birkenau, Treblinka, and Sobibor were designed for systematic killing, mostly using poison gas in gas chambers.
+                        This organized murder of about six million Jewish people by the Nazis. Millions of other people, including Roma, Poles, Soviet prisoners of war, and disabled individuals, were also murdered by the Nazi. This was one of the most terrible genocides in history.
+                        </p>
+                        <img src="https://www.nationalww2museum.org/sites/default/files/2024-10/Auschwitz.jpg" alt="Concentration Camp - Placeholder: e.g., the gates of Auschwitz or a photo of camp barracks (use with sensitivity)" class="history-image rounded-lg mx-auto">
+                    </div>
+                </div>
+            </section>
+
+            <section id="global" class="content-section">
+                <h2 class="text-3xl font-semibold mb-6" style="color: #A44A3F;">The War Becomes Global</h2>
+                 <div class="space-y-8">
+                    <div class="info-card p-6 rounded-lg shadow-lg">
+                        <h3 class="text-2xl font-semibold mb-3" style="color: #C6AC8F;">The Attack on Pearl Harbor: America Enters the War</h3>
+                        <p class="leading-relaxed mb-4">For the first few years of the war, the United States tried to stay out of the fighting, although it did help Britain with supplies. However, on December 7, 1941, everything literally changed. On that Sunday morning, Japan, which was one of Germany's allies (an Axis Power), launched a surprise attack on the American naval base at Pearl Harbor in Hawaii.
+                        Japanese planes bombed and torpedoed, meaning they attacked with a torpedothe, American warships and airfields. Many American ships were sunk or badly damaged, and over 2,400 Americans were killed.
+                        Japan wanted to expand its empire in Southeast Asia and the Pacific Ocean. They knew the American navy was strong and could stop them. So, they hoped that by attacking Pearl Harbor, they could destroy a large part of the U.S. Pacific Fleet and prevent America from interfering with their plans.
+                        While the attack did a lot of damage, it didn't completely destroy the American fleet. Importantly, the American aircraft carriers (the most important ships) were not at Pearl Harbor during the attack.
+                        The attack on Pearl Harbor shocked and angered Americans. The very next day, December 8, 1941, the United States declared war upon Japan. A few days later, Germany and Italy declared war on the United States, and America was officially fully involved in World War II on the side of the Allies.
+                        </p>
+                        <img src="https://www.pearlharbortours.com/wp-content/uploads/2018/11/The_USS_Arizona_BB-39_burning_after_the_Japanese_attack_on_Pearl_Harbor_Dec-7th-1941-wikimedia.jpg" alt="Pearl Harbor - Placeholder: e.g., a photo of the attack on Pearl Harbor, like the USS Arizona" class="history-image rounded-lg mx-auto">
+                    </div>
+                </div>
+            </section>
+
+            <section id="quiz" class="content-section">
+                <h2 class="text-3xl font-semibold mb-6" style="color: #A44A3F;">Test Your Knowledge</h2>
+                <div id="quiz-container" class="space-y-6">
+                    </div>
+                <div id="quiz-result" class="mt-8 text-2xl font-semibold text-center"></div>
+                <button onclick="submitQuiz()" class="button-primary mt-6 font-bold py-3 px-6 rounded-lg shadow-md transition duration-150 ease-in-out block mx-auto">Submit Answers</button>
+                <button onclick="resetQuiz()" class="button-secondary mt-4 font-bold py-2 px-4 rounded-lg shadow-md transition duration-150 ease-in-out block mx-auto text-sm">Try Again</button>
+            </section>
+        </main>
+
+        <footer class="text-center mt-12 py-6 border-t footer-border">
+            <p class="footer-text">&copy; <span id="currentYear"></span> WWII Learning Portal. Made by Siilen Sainsur with the help of AI</p>
+        </footer>
+    </div>
+
+    <script>
+        // Set current year in footer
+        document.getElementById('currentYear').textContent = new Date().getFullYear();
+
+        // Tab navigation
+        const sections = document.querySelectorAll('.content-section');
+        const tabButtons = document.querySelectorAll('.tab-button');
+
+        function showSection(sectionId) {
+            sections.forEach(section => {
+                section.classList.remove('active');
+            });
+            tabButtons.forEach(button => {
+                button.classList.remove('active');
+            });
+
+            document.getElementById(sectionId).classList.add('active');
+            document.querySelector(`.tab-button[onclick="showSection('${sectionId}')"]`).classList.add('active');
+            document.getElementById('content-area').scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+
+        // Quiz Data (Ensure text content is not lost in minification)
+        const quizData = [
+            {
+                question: "What was the name of the myth that falsely blamed civilian politicians for Germany's defeat in WWI?",
+                options: ["The Great Betrayal", "November Criminals Myth", "Stab-in-the-Back Myth (Dolchstoßlegende)", "The Weimar Conspiracy"],
+                answer: "Stab-in-the-Back Myth (Dolchstoßlegende)",
+                topic: "causes"
+            },
+            {
+                question: "What was it called when German money became almost worthless in the early 1920s because the government printed too much?",
+                options: ["The Great Depression", "Hyperinflation", "The Banking Collapse of 1921", "The Reparations Crisis"],
+                answer: "Hyperinflation",
+                topic: "causes"
+            },
+            {
+                question: "Adolf Hitler became the leader of which political party, also known as the Nazi Party?",
+                options: ["Social Democratic Party", "Communist Party of Germany", "German National People's Party", "National Socialist German Workers' Party"],
+                answer: "National Socialist German Workers' Party",
+                topic: "causes"
+            },
+            {
+                question: "Which of these countries was NOT a main member of the Axis Powers?",
+                options: ["Germany", "Italy", "Japan", "Soviet Union"],
+                answer: "Soviet Union",
+                topic: "path"
+            },
+            {
+                question: "The 'Danzig Crisis,' which directly led to the invasion of Poland, involved Germany's demands on which country?",
+                options: ["Czechoslovakia", "Austria", "Poland", "France"],
+                answer: "Poland",
+                topic: "path"
+            },
+            {
+                question: "Germany's surprise invasion of Denmark and Norway in April 1940 was mainly to secure shipments of what resource?",
+                options: ["Oil", "Coal", "Iron Ore", "Timber"],
+                answer: "Iron Ore",
+                topic: "aggressions"
+            },
+            {
+                question: "Through which unexpected forest region did German tank forces break through to invade France in 1940?",
+                options: ["Black Forest", "Bavarian Forest", "Teutoburg Forest", "Ardennes Forest"],
+                answer: "Ardennes Forest",
+                topic: "aggressions"
+            },
+            {
+                question: "When did Italy, under Mussolini, officially join Germany in World War II?",
+                options: ["September 1939 (Start of war)", "June 1940 (After France was nearly defeated)", "December 1941 (After Pearl Harbor)", "May 1938 (Before the war)"],
+                answer: "June 1940 (After France was nearly defeated)",
+                topic: "aggressions"
+            },
+            {
+                question: "What is the name for the event on November 9-10, 1938, when Nazis attacked Jewish homes, businesses, and synagogues?",
+                options: ["The Night of Long Knives", "The Beer Hall Putsch", "Kristallnacht (Night of Broken Glass)", "The Warsaw Ghetto Uprising"],
+                answer: "Kristallnacht (Night of Broken Glass)",
+                topic: "holocaust"
+            },
+            {
+                question: "Auschwitz-Birkenau was one of the most infamous Nazi camps primarily designed for what purpose?",
+                options: ["Holding Prisoners of War", "Relocating populations", "Forced Labor for war production", "Systematic extermination (mass murder)"],
+                answer: "Systematic extermination (mass murder)",
+                topic: "holocaust"
+            },
+            {
+                question: "The surprise attack by Japan on which US naval base on December 7, 1941, caused the USA to enter WWII?",
+                options: ["San Diego Naval Base", "Norfolk Naval Station", "Pearl Harbor", "Guantanamo Bay Naval Base"],
+                answer: "Pearl Harbor",
+                topic: "global"
+            }
+        ];
+
+        const quizContainer = document.getElementById('quiz-container');
+        const quizResult = document.getElementById('quiz-result');
+
+        function loadQuiz() {
+            quizContainer.innerHTML = '';
+            quizResult.innerHTML = '';
+            quizData.forEach((q, index) => {
+                const questionElement = document.createElement('div');
+                questionElement.classList.add('info-card', 'p-6', 'rounded-lg', 'shadow-lg');
+                const questionText = q.question;
+                const optionsHTML = q.options.map(option => `
+                    <label class="block quiz-option p-3 rounded-md border hover:border-yellow-400 cursor-pointer">
+                        <input type="radio" name="question${index}" value="${option}" class="mr-2">
+                        ${option}
+                    </label>
+                `).join('');
+                questionElement.innerHTML = `
+                    <p class="font-semibold text-lg mb-4">${index + 1}. ${questionText}</p>
+                    <div class="space-y-2 options-container">
+                        ${optionsHTML}
+                    </div>
+                `;
+                quizContainer.appendChild(questionElement);
+            });
+        }
+
+        function submitQuiz() {
+            let score = 0;
+            quizData.forEach((q, index) => {
+                const selectedOption = document.querySelector(`input[name="question${index}"]:checked`);
+                const optionsRadios = document.querySelectorAll(`input[name="question${index}"]`);
+                
+                optionsRadios.forEach(optRadio => {
+                    const label = optRadio.parentElement;
+                    label.classList.remove('correct', 'incorrect');
+                });
+
+                if (selectedOption) {
+                    const parentLabel = selectedOption.parentElement;
+                    if (selectedOption.value === q.answer) {
+                        score++;
+                        parentLabel.classList.add('correct');
+                    } else {
+                        parentLabel.classList.add('incorrect');
+                        optionsRadios.forEach(optRadio => {
+                            if (optRadio.value === q.answer) {
+                                optRadio.parentElement.classList.add('correct');
+                            }
+                        });
+                    }
+                } else {
+                     optionsRadios.forEach(optRadio => { 
+                        if (optRadio.value === q.answer) {
+                           // optRadio.parentElement.classList.add('correct'); 
+                        }
+                    });
+                }
+            });
+
+            quizResult.textContent = `You scored ${score} out of ${quizData.length}.`;
+            quizResult.className = 'mt-8 text-2xl font-semibold text-center'; 
+
+            if (score === quizData.length) {
+                quizResult.innerHTML += "<br>Excellent! You know your history!";
+                quizResult.classList.add('text-green-400'); 
+            } else if (score >= quizData.length / 2) {
+                quizResult.innerHTML += "<br>Good job! Review the material to learn even more.";
+                quizResult.classList.add('text-yellow-400'); 
+            } else {
+                quizResult.innerHTML += "<br>Keep learning! Review the sections and try the quiz again.";
+                quizResult.classList.add('text-red-500'); 
+            }
+        }
+        
+        function resetQuiz() {
+            loadQuiz();
+        }
+
+        // Initial load
+        loadQuiz();
+        showSection('intro');
+
+    </script>
+</body>
+</html>
